@@ -1,0 +1,47 @@
+<div class="header-top">
+  <div class="header-top__inner">
+    <a class="logo-link" href="/">
+      <div class="logo-link__wrap">
+        <img class="logo-link__wrap-img" src="../assets/img/logo.png" width="50" height="50" alt="Logo E-exchange">
+        <p class="logo-link__wrap-text">
+          {{ header.logo }}
+        </p>
+      </div>
+    </a>
+    <div class="header-top__left">
+      <nav class="header-top__nav">
+        <ul class="header-top__nav-list">
+          <li class="header-top__nav-elem hover">
+            <a href="/" class="header-top__nav-link">
+              {{ header['nav-list'][0]['main'] }}
+            </a>
+          </li>
+          <li class="header-top__nav-elem hover">
+            <a href="./contacts.html" class="header-top__nav-link">
+              {{ header['nav-list'][1]['contacts'] }}
+            </a>
+          </li>
+          <li class="header-top__nav-elem hover">
+            <a href="#" class="header-top__nav-link">
+              {{ header['nav-list'][2]['rules'] }}
+            </a>
+          </li>
+          <li class="header-top__nav-elem hover">
+            <a href="#" class="header-top__nav-link">
+              {{ header['nav-list'][3]['about'] }}
+            </a>
+          </li>
+        </ul>
+        <button class="header-top__nav-btn">
+          {{ header.btn }}
+        </button>
+      </nav>
+    </div>
+    <div class="header-top__burger">
+      <span class="header-top__burger-line header-top__burger-first"></span>
+      <span class="header-top__burger-line header-top__burger-second"></span>
+      <span class="header-top__burger-line header-top__burger-third"></span>
+    </div>
+    {% include "./menu.njk" %}
+  </div>
+</div>

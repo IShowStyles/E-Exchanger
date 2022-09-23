@@ -1,0 +1,492 @@
+.swaper {
+  padding: 18px 30px 22px;
+  border-radius: 20px;
+  background-color: $white;
+  max-width: 485px;
+  width: 100%;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    top: 57px;
+    background-color: #dadada;
+  }
+
+  &-inner {
+    min-width: 98%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-top {
+    &__name {
+      display: inline-block;
+      position: relative;
+      margin-left: 3px;
+      @include inter-300;
+      font-size: 18px;
+      line-height: 22px;
+      color: $darkText;
+      padding-bottom: 17px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -1px;
+        background-color: $darkText;
+      }
+    }
+  }
+}
+
+.swaper-trade {
+  padding-top: 26px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  &__coin {
+    margin-right: 20px;
+  }
+
+  &__text {
+    display: flex;
+    @include inter-600;
+    flex-grow: 66;
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+
+
+.swaper-trade {
+  &__close {
+    display: none;
+  }
+
+  &__burger-wrap {
+    cursor: pointer;
+    padding: 13px;
+    border-radius: 50%;
+    border: 2px solid #dadada;
+  }
+}
+
+
+.swaper {
+  &-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  &-elem {
+    color: $gray-100;
+    @include inter-500;
+    font-size: 12px;
+    line-height: 15px;
+    cursor: pointer;
+  }
+}
+
+.swaper-btn {
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  padding: 18px 0;
+  @include inter-500;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  background-color: $yellow-600;
+  border: transparent;
+
+  & > span {
+    position: relative;
+    z-index: 111;
+    color: $darkText;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -25%;
+    top: 0;
+    width: 150%;
+    height: 100%;
+    background-color: $darkText;
+    transform: translateX(-130%) skew(-15deg);
+    transition: all .25s;
+  }
+
+  &:hover {
+    &::before {
+      transform: translateX(0) skew(0);
+    }
+
+    & > span {
+      color: $white;
+    }
+  }
+}
+
+.swaper__available {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+
+  &__text {
+    @include inter-400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $gray-100;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+  }
+  &-num{
+    @include inter-400;
+    color: $darkText;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+.swaper-exchange__card-select:last-child{
+  .swaper-exchange__card-btn.active-btn{
+    height: 40px;
+  }
+}
+
+.swaper-exchange__errors{
+  display: none;
+  margin-bottom: 12px;
+  & p{
+    transition: all .3s linear;
+    @include inter-300;
+    &:not(:last-child) {
+      margin-bottom: 6px;
+    }
+  }
+}
+
+.swaper-promo {
+  margin-bottom: 22px;
+}
+
+.swaper-promo__visible {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &-text {
+    font-size: 16px;
+    line-height: 19px;
+    color: $gray-100;
+  }
+}
+
+.swaper-promo__plus {
+  margin-right: 10px;
+
+  &-img {
+    width: 11px;
+    height: 11px;
+  }
+
+  &-close {
+    display: none;
+    width: 11px;
+    height: 6px;
+  }
+}
+
+.swaper-promo__input {
+  display: none;
+}
+
+.swaper-promo__input {
+  margin-top: 23px;
+  border: 2px solid #DADADA;
+  border-radius: 15px;
+
+  & > input {
+    border: transparent;
+    padding: 25px 7px;
+    margin-left: 10px;
+
+    &::placeholder {
+      @include inter-300;
+      font-size: 15px;
+      line-height: 18px;
+      color: $gray-100;
+    }
+  }
+}
+
+.swaper-exchange {
+  position: relative;
+  border: 2px solid #DADADA;
+  border-radius: 20px;
+  padding-left: 17px;
+  padding-right: 20px;
+  margin-bottom: 23px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #dadada;
+  }
+}
+
+.swaper-exchange__elem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-input {
+    display: flex;
+    flex-direction: column;
+    padding: 17px 0 10px 0;
+
+    & > input {
+      border: none;
+      height: 29px;
+      max-width: 125px;
+      @include inter-500;
+      font-size: 24px;
+      line-height: 29px;
+
+      &::placeholder {
+        color: $darkText;
+      }
+    }
+
+    & > label {
+      @include inter-300;
+      font-size: 14px;
+      line-height: 17px;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.swaper-exchange__elem {
+  &-currency {
+    display: none;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    &-img {
+      margin-right: 6px;
+    }
+  }
+}
+
+.swaper-exchange__dropdown-dn {
+  display: none;
+}
+
+.swaper-exchange {
+  &__wrap {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+
+    &-img {
+      margin-right: 6px;
+    }
+
+    &-currency {
+      @include inter-500;
+      font-size: 15px;
+      line-height: 18px;
+      color: $darkText;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.swaper-exchange {
+  flex-direction: column;
+  &__elem-value {
+    @include inter-500;
+    font-size: 15px;
+    line-height: 18px;
+    color: $darkText;
+    text-transform: uppercase;
+  }
+}
+
+.swaper-exchange__select {
+  max-width: 156px;
+}
+
+.swaper-deposit {
+  margin-bottom: 20px;
+  display: none;
+  flex-direction: column;
+}
+
+.swaper-deposit__elem {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 18px 17px;
+  border: 2px solid #DADADA;
+  border-radius: 15px;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  &-label {
+    @include inter-400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $darkText;
+    margin-bottom: 8px;
+  }
+
+  &-input {
+    @include inter-400;
+    font-size: 20px;
+    line-height: 24px;
+    border: transparent;
+    color: $darkText;
+    &::placeholder{
+      color: $gray-100;
+    }
+  }
+}
+
+.swaper-waiting {
+  display: none;
+  padding-top: 111px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.swaper-waiting__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 6;
+  height: 308px;
+
+  &-trade {
+    text-align: center;
+    @include inter-500;
+    font-size: 32px;
+    line-height: 39px;
+    color: $darkText;
+    margin-bottom: 17px;
+  }
+
+  &-text {
+    text-align: center;
+    font-size: 16px;
+    @include inter-300;
+    line-height: 19px;
+    color: $gray-100;
+  }
+}
+
+
+.swaper-waiting__bottom-text {
+  @include inter-300;
+  color: $darkText;
+  font-size: 13px;
+  line-height: 16px;
+
+  & > span {
+    @include inter-700;
+  }
+}
+
+.swaper-result {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+
+  &__finished {
+    display: flex;
+    align-items: center;
+
+    &-text {
+      font-size: 32px;
+      line-height: 39px;
+      @include inter-500;
+      color: $darkText;
+      margin-right: 14px;
+    }
+  }
+
+  &__text {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    line-height: 24px;
+    color: $darkText;
+    @include inter-400;
+    text-transform: uppercase;
+    margin-bottom: 43px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -9px;
+      width: 100%;
+      height: 1px;
+      background-color: $darkText;
+    }
+  }
+}
+
+.swaper-result {
+  &__details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+    &-text{
+      @include inter-500;
+      font-size: 24px;
+      line-height: 29px;
+      color: $darkText;
+      margin-bottom: 12px;
+    }
+    &-list{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 16px;
+      line-height: 19px;
+      @include inter-400;
+      color: $darkText;
+    }
+    &-elem{
+      &:not(:last-child){
+        margin-bottom: 8px;
+      }
+    }
+  }
+}

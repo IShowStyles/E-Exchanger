@@ -1,0 +1,58 @@
+.contacts .header{
+  padding: 40px 0 330px 0;
+  &-top{
+    margin-bottom: 196px;
+  }
+}
+
+.header-contacts{
+  &__title{
+    font-size: 60px;
+    line-height: 73px;
+    @include inter-600;
+    color: $white;
+    margin-bottom: 46px;
+  }
+  &__list{
+    display: flex;
+    flex-direction:column ;
+    margin-bottom: 46px;
+  }
+  &__elem{
+    padding-left: 75px;
+    height: 60px;
+    &:not(:last-child){
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.header-contacts__elem{
+  display: flex;
+  align-items: center;
+  position: relative;
+  &-link{
+    color: #fff;
+    @include inter-600;
+    font-size: 26px;
+    line-height: 31px;
+  }
+  &-instagram{
+    background-image: url("../../assets/img/contacts/Instagram.png");
+    background-position: -6px 0;
+    background-repeat: no-repeat;
+  }
+  &-telegram{
+    background-image: url("../../assets/img/contacts/Telegram.png");
+    background-position: -6px 0;
+    background-repeat: no-repeat;
+
+  }
+}
+
+.header-contacts__question{
+  @include inter-400;
+  color: $gray-300;
+  font-size: 24px;
+  line-height: 29px;
+}

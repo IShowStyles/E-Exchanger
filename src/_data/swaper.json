@@ -1,0 +1,25 @@
+{
+  "name" : "Swap crypto",
+  "start" : "Начать обмен",
+  "promo" : "Промо код",
+  "list" : [
+      {"details":"Дeтали"},
+      {"deposit"  : "Депозит"},
+      {"trade": "Обмен"},
+      {"finish": "Гoтово"}
+  ],
+  "available" : [
+      {"rate":"Курс обмена:" },
+      {"reserved":"Резерв :"},
+      {"minimal": "Минимальная сумма:"}
+  ],
+  "exchange" :  [
+   {"in" : "Вы отправляете"},
+  {"out" : "Вы получаете"}
+  ],
+  "currency" : [
+    {"usdt" : "usdt"},
+    {"usdt-1" : "usdt trc-20"},
+    {"usdt-2" : "usdt bep-20"}
+  ]
+}
