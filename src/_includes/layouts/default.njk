@@ -9,13 +9,15 @@
     <title>
       {%- if title -%}{{ title }} - {{ site.title }}{%- else -%} {{ site.title }}{%- endif -%}
     </title>
-    {% include "../parts/meta.html" ignore missing %}
+    {% include "../parts/meta.njk" ignore missing %}
     <link rel="stylesheet" href="assets/css/demo.css" />
     <link rel="stylesheet" href="assets/css/app.css" />
   </head>
   <body class="{{ bodyClass }}">
+      {% include "../parts/preloader.njk" ignore missing %}
       {% include "../parts/header.njk" ignore missing %}
       {% include "../parts/footer.njk" ignore missing %}
+    <script src="./assets/js/burger.js"></script>
     <script src="./assets/js/app.js"></script>
   </body>
 </html>

@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <title>E-exchange</title>
+  <link rel="stylesheet" href="assets/css/demo.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="start">
+<div class="preloader">
+  <div class="lds-default">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<header class="header">
+  <div class="container">
+    <div class="header-top">
+      <div class="header-top__inner"><a class="logo-link" href="/">
+        <div class="logo-link__wrap"><img class="logo-link__wrap-img" src="assets/img/logo.png" width="50"
+                                          height="50" alt="Logo E-exchange">
+          <p class="logo-link__wrap-text">e-exchange</p></div>
+      </a>
+        <div class="header-top__left">
+          <nav class="header-top__nav">
+            <ul class="header-top__nav-list">
+              <li class="header-top__nav-elem hover"><a href="/" class="header-top__nav-link">Главная</a></li>
+              <li class="header-top__nav-elem hover"><a href="./contacts.html" class="header-top__nav-link">Контакты</a>
+              </li>
+              <li class="header-top__nav-elem hover"><a href="./rules.html" class="header-top__nav-link">Правила
+                обмена</a></li>
+              <li class="header-top__nav-elem hover"><a href="./about.html" class="header-top__nav-link">О нас</a></li>
+            </ul>
+            <a class="header-top__nav-btn" href="./reviews.html">Отзывы</a></nav>
+        </div>
+        <div class="header-top__burger"><span class="header-top__burger-line header-top__burger-first"></span> <span
+          class="header-top__burger-line header-top__burger-second"></span> <span
+          class="header-top__burger-line header-top__burger-third"></span></div>
+        <ul class="header-top__menu-list">
+          <li class="header-top__menu-elem hover"><a href="/" class="header-top__menu-link">Главная</a></li>
+          <li class="header-top__menu-elem hover"><a href="./contacts.html" class="header-top__menu-link">Контакты</a>
+          </li>
+          <li class="header-top__menu-elem hover"><a href="./rules.html" class="header-top__menu-link">Правила
+            обмена</a></li>
+          <li class="header-top__menu-elem hover"><a href="./reviews.html" class="header-top__menu-link">Отзывы</a></li>
+          <li class="header-top__menu-elem hover"><a href="./about.html" class="header-top__menu-link">О нас</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="header-bottom">
+      <div class="header-bottom__title"><h1 class="header-bottom__title-text">Быстрый обмен криптовалюты на фиат <span>Exchange!</span>
+      </h1>
+        <div class="header-bottom__proposition">
+          <div class="header-bottom__proposition-one"><p class="header-bottom__proposition-text"><span>Обмен</span> USDT
+            на EUR</p></div>
+          <div class="header-bottom__proposition-two"><p class="header-bottom__proposition-text"><span>Обмен</span><br>без
+            ограничений</p></div>
+          <div class="header-bottom__proposition-three"><p class="header-bottom__proposition-text">
+            <span>Обмен</span><br>за минимальное время</p></div>
+        </div>
+      </div>
+      <div class="swaper">
+        <div class="swaper-inner">
+          <div class="swaper-top"><p class="swaper-top__name">Swap crypto</p></div>
+          <div class="swaper-trade"><img class="swaper-trade__coin" src="assets/img/trade_swaper.png" width="50"
+                                         height="50" alt="trade-coin">
+            <p class="swaper-trade__text">Начать обмен</p>
+            <div class="swaper-trade__burger-wrap"><img class="swaper-trade__burger" src="assets/img/burger.png"
+                                                        width="18" height="12" alt="swaper burger"> <img
+              class="swaper-trade__close" src="assets/img/close.png" alt="swaper burger close"></div>
+          </div>
+          <ul class="swaper-list">
+            <li class="swaper-elem active-list">Дeтали</li>
+            <li class="swaper-elem">Депозит</li>
+            <li class="swaper-elem">Обмен</li>
+            <li class="swaper-elem">Гoтово</li>
+          </ul>
+          <div class="swaper-exchange block">
+            <div class="swaper-exchange__elem">
+              <div class="swaper-exchange__elem-input"><label for="in">Вы отправляете</label> <input type="text"
+                                                                                                     id="fiat-in"
+                                                                                                     name="in"
+                                                                                                     placeholder="70"
+                                                                                                     required></div>
+              <select name="currency" class="vodiapicker">
+                <option data-value="assets/img/tether.png" value="tether">usdt</option>
+                <option data-value="assets/img/tether.png" value="tether_trc-20">usdt trc-20</option>
+                <option data-value="assets/img/tether.png" value="tether_erc-20">usdt erc-20</option>
+              </select>
+              <div class="lang-select">
+                <button class="btn-select chevron" id="btn-crypto" data-value="tether" value=""></button>
+                <div class="b">
+                  <ul class="swaper-exchange__select" id="a"></ul>
+                </div>
+              </div>
+            </div>
+            <div class="swaper-exchange__elem">
+              <div class="swaper-exchange__elem-input"><label for="in">Вы получаете</label> <input type="text" name="in"
+                                                                                                   id="fiat-out"
+                                                                                                   placeholder=""
+                                                                                                   required></div>
+              <select name="crypto" class="master__picker">
+                <option data-value="assets/img/Mastercard.png" value="visa">Visa</option>
+                <option data-value="assets/img/Mastercard.png" value="eur">Visa/Master Card EUR</option>
+                <option data-value="assets/img/Mastercard.png" value="usd">Visa/Master Card USD</option>
+                <option data-value="assets/img/Mastercard.png" value="rub">Visa/Master Card RUB</option>
+                <option data-value="assets/img/Mastercard.png" value="uah">Visa/Master Card UAH</option>
+              </select>
+              <div class="swaper-exchange__card-select">
+                <button class="swaper-exchange__card-btn chevron" data-value="visa" id="card-btn" value=""></button>
+                <div id="wrap" class="swaper-exchange__card-wrap">
+                  <ul class="swaper-exchange__card-list" id="b"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swaper-exchange__errors"></div>
+          <div class="swaper-deposit block">
+            <div class="swaper-deposit__elem"><label class="swaper-deposit__elem-label" for="email">Ваш E-mail
+              ящик</label> <input class="swaper-deposit__elem-input" id="deposit-email" type="text" data-error="false"
+                                  name="email" placeholder="jack@gmail.com"></div>
+            <div class="swaper-deposit__elem"><label class="swaper-deposit__elem-label" for="email">Номер карты</label>
+              <input class="swaper-deposit__elem-input" id="deposit-card" type="text" data-error="false" name="card"
+                     placeholder="Номер карты получателя"></div>
+            <div class="swaper-deposit__elem"><label class="swaper-deposit__elem-label" for="email">Ф.И.О.
+              получателя</label> <input class="swaper-deposit__elem-input" id="deposit-name" type="text"
+                                        data-error="false" name="name" placeholder="Ф.И.О. владельца карты, полностью">
+            </div>
+            <div class="swaper-deposit__errors"></div>
+          </div>
+          <div class="swaper-waiting block">
+            <div class="swaper-waiting__top"><span class="swaper-waiting__top-trade">Обмен USDT <span id="chain"></span> на Visa/MasterCard EUR</span>
+              <div class="swaper-waiting__top-text">Send amount <span id="usd-receive"></span> on <span
+                id="receive-chain"></span> :<p id="receive-adress"></p></div>
+            </div>
+            <div class="swaper-waiting__bottom">
+              <button class="swaper-waiting__bottom-btn"><span>Гoтово</span></button>
+              <a class="swaper-waiting__bottom-link" href="#"><p class="swaper-waiting__bottom-text">Посмотрите наши
+                <span>12</span> отзывов</p></a></div>
+          </div>
+          <div class="swaper-result block">
+            <div class="swaper-result__finished"><span
+              class="swaper-result__finished-text">Платёж в обработке </span><img class="swaper-result__finished-img"
+                                                                                  src="assets/img/finished.png"
+                                                                                  alt="img : your trade was finished">
+            </div>
+            <div>
+              <div class="swaper-result__details"><p class="swaper-result__details-text">Детали оплаты</p>
+                <ul class="swaper-result__details-list">
+                  <li class="swaper-result__details-elem"><p>№ Операции:<span>00000001</span></p></li>
+                  <li class="swaper-result__details-elem"><p>Дата оплаты:<span>14.09.2022</span></p></li>
+                  <li class="swaper-result__details-elem"><p>Сумма: <span>0,00</span></p></li>
+                </ul>
+              </div>
+            </div>
+            <p class="swaper-result__text">Провести ещё один обмен?</p>
+            <p class="swaper-waiting__bottom-text">Посмотрите наши <span>12</span> отзывов</p></div>
+          <div class="swaper-promo">
+            <div class="swaper-promo__visible">
+              <div class="swaper-promo__plus"><img class="swaper-promo__plus-img" src="assets/img/plus.png"
+                                                   width="11" height="11" alt="plus"> <img
+                class="swaper-promo__plus-close" src="assets/img/promo-close.png" width="11" height="11" alt="plus">
+              </div>
+              <p class="swaper-promo__visible-text">Промо код</p></div>
+            <div class="swaper-promo__input"><input type="text" placeholder="Промо код" name="promo"></div>
+          </div>
+          <div class="swaper__available">
+            <div class="swaper__available-item"><p class="swaper__available__text">Курс обмена:</p><span
+              class="swaper__available-num"></span></div>
+            <div class="swaper__available-item"><p class="swaper__available__text">Резерв :</p><span
+              class="swaper__available-num" id="reserv"></span></div>
+            <div class="swaper__available-item"><p class="swaper__available__text">Минимальная сумма:</p><span
+              class="swaper__available-num">70 USDT</span></div>
+          </div>
+          <button class="swaper-btn"><span>Начать обмен</span></button>
+          <button class="swaper-btn__deposit"><span>Начать обмен</span></button>
+        </div>
+        <div id="trades">
+          <div class="swaper-trades">
+            <div class="swaper-trades__top">
+              <div class="swaper-trades__top-back"><img src="../assets/img/back.png" width="7" height="13"
+                                                        alt="back to trade btn"></div>
+              <span class="swaper-trades__top-trade">Мои обмены <sup id="trades-count"></sup></span>
+              <div class="swaper-trades__top-status">
+                <div class="swaper-trades__top-add"><img src="../assets/img/addTrade.png" width="14" height="14"
+                                                         alt="add Trade "></div>
+                <div class="swaper-trades__top-close"><img src="../assets/img/closeTrades.png" width="21" height="21"
+                                                           alt="close window"></div>
+              </div>
+            </div>
+            <div class="swaper-trades__text"><p class="swaper-trades__text-paragraph">Статус ваших последних обменов</p>
+            </div>
+            <div class="swaper-trades__block">
+              <div class="swaper-trades__block-empty"><p class="swaper-trades__block-trade">Обменов пока нет</p>
+                <p class="swaper-trades__block-text">Похоже, вы все еще не начали обмен</p></div>
+            </div>
+            <div class="swaper-results"></div>
+          </div>
+          <a class="swaper-waiting__bottom-link" href="#"><p class="swaper-waiting__bottom-text">Посмотрите наши <span>12</span>
+            отзывов</p></a></div>
+      </div>
+    </div>
+  </div>
+</header>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner"><h2 class="footer-title">НАШИ ПАРТНЕРЫ</h2>
+      <div class="footer-partners"><img class="footer-partners__img footer-partners__img-first footer-partners__img-mr"
+                                        src="assets/img/best-change.png" width="240" height="50"
+                                        alt="Partners : Best-change"> <img
+        class="footer-partners__img footer-partners__img-second footer-partners__img-mr" src="assets/img/sepa.png"
+        width="88" height="25" alt="Partners : sepa"> <img
+        class="footer-partners__img footer-partners__img-third footer-partners__img-mr" src="assets/img/SWIFT.png"
+        width="30" height="30" alt="Partners : SWIFT"> <img
+        class="footer-partners__img footer-partners__img-fourth footer-partners__img-mr" src="assets/img/bitfury.png"
+        width="129" height="25" alt="Partners : bitfury"> <img
+        class="footer-partners__img footer-partners__img-fifth footer-partners__img-mr" src="assets/img/Zcash.png"
+        width="56" height="25" alt="Partners : Zcash"> <img
+        class="footer-partners__img footer-partners__img-sixth footer-partners__img-mr"
+        src="assets/img/bitcoinmarket.png" width="166" height="25" alt="Partners : bitcoinmarket"> <img
+        class="footer-partners__img footer-partners__img-seventh footer-partners__img-mr"
+        src="assets/img/paymetns.png" width="102" height="25" alt="Partners : paymetns"></div>
+    </div>
+  </div>
+  <div class="footer-copyrights"><p class="footer-copyrights__text">© Copyright © <span>2022</span> - All Rights
+    Reserved.</p></div>
+</footer>
+<script src="./assets/js/burger.js"></script>
+<script src="./assets/js/app.js"></script>
+</body>
+</html>

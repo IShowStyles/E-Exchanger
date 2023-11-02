@@ -55,6 +55,7 @@
 
 .header-bottom__title {
   max-width: 597px;
+  width: 100%;
   padding-top: 130px;
   &-text{
     margin-bottom: 50px;
@@ -81,7 +82,7 @@
 }
 
 .header-bottom__proposition{
-  max-width: 600px;
+  max-width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -164,9 +165,9 @@
     &:nth-child(-n+2){
       margin-bottom: 16px;
     }
-    &:nth-last-of-type(-n+2){
-      padding-bottom: 26px;
-    }
+    //&:nth-last-of-type(-n+2){
+    //  padding-bottom: 26px;
+    //}
   }
   &-link{
     @include inter-600;
@@ -180,6 +181,7 @@
   display: flex;
   position: absolute;
   padding-left: 11px;
+  padding-bottom: 26px;
   right: 80px;
   top: 5px;
   max-width: 300px;

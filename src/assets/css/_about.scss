@@ -1,0 +1,91 @@
+.about{
+    .header{
+        min-height: 50px;
+        padding: 30px 0 87px 0;
+        background-color: $darkText;
+        background-image: url("../img/contacts/contacts-bg-lg.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: contain;
+        background-position: 0 0;
+    }
+
+    &-title {
+        @include inter-600;
+        color: $white;
+        font-size: 48px;
+        line-height: 58px;
+        margin-bottom: 43px;
+    }
+
+    &-inner{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &-card{
+
+        & p{
+            @include inter-400;
+            font-size: 22px;
+            line-height: 27px;
+            color:#D9D9D9;
+        }
+
+        &__top{
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            p {
+                @include inter-400;
+                color: $white;
+                font-size: 24px;
+                line-height: 29px;
+                padding-left: 15px;
+                width: 100%;
+            }
+            &-first{
+                & span{
+                    background-image: url("../img/about/Clock.png");
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    width: 60px;
+                    height: 60px;
+                }
+
+            }
+            &-second{
+                & span{
+                    background-image: url("../img/about/face.png");
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+            &-third{
+               & span {
+                background-image: url("../img/about/shield.png");
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 60px;
+                height: 60px;
+               }
+            }
+        }
+
+        &__first{
+            max-width: 466px;
+            margin-bottom: 87px;
+            margin-right: 100px;
+        }
+
+        &__second{
+            max-width: 466px;
+        }
+
+        &__third{
+            max-width: 466px;
+        }
+    }
+}      

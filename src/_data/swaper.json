@@ -2,6 +2,7 @@
   "name" : "Swap crypto",
   "start" : "Начать обмен",
   "promo" : "Промо код",
+  "btnReady" : "Гoтово",
   "list" : [
       {"details":"Дeтали"},
       {"deposit"  : "Депозит"},
@@ -20,6 +21,6 @@
   "currency" : [
     {"usdt" : "usdt"},
     {"usdt-1" : "usdt trc-20"},
-    {"usdt-2" : "usdt bep-20"}
+    {"usdt-2" : "usdt erc-20"}
   ]
 }

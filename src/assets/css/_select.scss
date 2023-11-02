@@ -5,6 +5,7 @@
 .swaper-exchange__card-list,
 #a {
   border-radius: 10px;
+  cursor: pointer;
 }
 
 
@@ -27,6 +28,7 @@
   padding: 8px 0 8px 8px;
   width: 100%;
   border: 1px solid transparent;
+  cursor: pointer;
 }
 
 .swaper-exchange__card-list li{
@@ -76,6 +78,7 @@
   background-color: #ECECEC;
   border: 1px solid transparent;
   transition: all .3s linear;
+  cursor: pointer;
 }
 
 .chevron{
@@ -113,6 +116,7 @@
 }
 .swaper-exchange__card-btn:hover li,
 .btn-select:hover li {
+
   margin-left: 0;
 }
 
@@ -130,6 +134,7 @@
 .swaper-exchange__card-select,
 .lang-select {
   position: relative;
+  cursor: pointer;
   right: 0;
 }
 
@@ -141,4 +146,12 @@
 #a li:last-child{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+}
+
+#wrap{
+  bottom: -115px;
+}
+
+#b li span{
+  text-transform: capitalize;
 }

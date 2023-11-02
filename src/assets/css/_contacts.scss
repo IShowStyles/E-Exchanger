@@ -1,5 +1,7 @@
 .contacts .header{
   padding: 40px 0 330px 0;
+  background-size: contain;
+  background-color: $darkText;
   &-top{
     margin-bottom: 196px;
   }

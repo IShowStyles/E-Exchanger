@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8"/>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <title>
+    {%- if title -%}{{ title }} - {{ site.title }}{%- else -%} {{ site.title }}{%- endif -%}
+  </title>
+  {% include "../parts/meta.njk" ignore missing %}
+  <link rel="stylesheet" href="assets/css/demo.css"/>
+  <link rel="stylesheet" href="assets/css/app.css"/>
+</head>
+<body class="{{ bodyClass }}">
+<header class="header">
+  <div class="container">
+    <div class="rules__bg" style="background-image: url('../../assets/img/444.png');"></div>
+    {% include "../parts/header-top.njk" ignore missing %}
+  </div>
+</header>
+<main>
+  <section class="reviews">
+    <div class="container">
+      <h1 class="reviews-title">
+        {{ reviews.title }}
+      </h1>
+      <div class="reviews-inner">
+        {% for item in reviews.cards %}
+          <div class="reviews-card">
+            <p>{{ item.name }}</p>
+            <span>{{ item.text }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>
+{% include "../parts/footer.njk" ignore missing %}
+<script src="./assets/js/burger.js"></script>
+</body>
+</html>

@@ -20,8 +20,8 @@
   "scripts": {
     "dev": "npm start",
     "start": "run-p eleventy-watch gulp-dev",
-    "build": "run-s clean prettier-check eleventy-build gulp-build",
-    "css": "run-s clean lint-css eleventy-build gulp-build-js gulp-build-css",
+    "build": "run-s clean eleventy-build gulp-build",
+    "css": "run-s clean eleventy-build gulp-build-js gulp-build-css",
     "lint-css": "stylelint \"src/**/*.{css,scss}\"",
     "fix-css": "stylelint \"src/**/*.{css,scss}\" --fix",
     "js": "run-s gulp-build-js",

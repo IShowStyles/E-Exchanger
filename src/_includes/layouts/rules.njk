@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <title>
+    {%- if title -%}{{ title }} - {{ site.title }}{%- else -%} {{ site.title }}{%- endif -%}
+  </title>
+  {% include "../parts/meta.njk" ignore missing %}
+  <link rel="stylesheet" href="assets/css/demo.css"/>
+  <link rel="stylesheet" href="assets/css/app.css"/>
+</head>
+<body class="{{ bodyClass }}">
+
+<header class="header">
+  <div class="container">
+    <div class="rules__bg" style="background-image: url('../../assets/img/444.png');"></div>
+    {% include "../parts/header-top.njk" ignore missing %}
+  </div>
+</header>
+<main>
+  <section class="requirements">
+    <div class="container">
+      <h1 class="requirements-title">
+        Соглашение пользователя с обменным ресурсом
+      </h1>
+      <div class="requirements-item">
+        <span>{{ rules.title[0].title }}</span>
+        {% for item in rules.text %}
+          <p>{{ item.elem }}</p>
+        {% endfor %}
+      </div>
+      <div class="requirements-item">
+        <span>{{ rules.title[1].title }}</span>
+        {% for item in rules.textTwo %}
+          <p>{{ item.elem }}</p>
+        {% endfor %}
+      </div>
+      <div class="requirements-item">
+        <span>{{ rules.title[2].title }}</span>
+        <span>{{ rules.title[3].title }}</span>
+        {% for item in rules.textThree %}
+          <p>{{ item.elem }}</p>
+        {% endfor %}
+      </div>
+      <div class="requirements-item">
+        <span>{{ rules.title[4].title }}</span>
+        {% for item in rules.textFour %}
+          <p>{{ item.elem }}</p>
+        {% endfor %}
+      </div>
+      <div class="requirements-item">
+        <span>{{ rules.title[5].title }}</span>
+        {% for item in rules.textFive %}
+          <p>{{ item.elem }}</p>
+        {% endfor %}
+      </div>
+      <div class="requirements-item">
+        <span>{{ rules.title[6].title }}</span>
+        {% for item in rules.textSix %}
+          <p>{{ item.elem }}</p>
+        {% endfor %}
+      </div>
+      <div class="requirements-item">
+        <span>{{ rules.title[7].title }}</span>
+        {% for item in rules.textSeven %}
+          <p>{{ item.elem }}</p>
+        {% endfor %}
+      </div>
+      <div class="requirements-item">
+        <span>{{ rules.title[8].title }}</span>
+        {% for item in rules.textEight %}
+          <p>{{ item.elem }}</p>
+        {% endfor %}
+      </div>
+      <div class="requirements-item">
+        <span>{{ rules.title[9].title }}</span>
+        <p>{{ rules.textNine }}</p>
+      </div>
+      <div class="requirements-item">
+        <span>{{ rules.title[10].title }}</span>
+        <p>{{ rules.textTen }}</p>
+      </div>
+      <div class="requirements-item">
+        <span>{{ rules.title[11].title }}</span>
+        {% for item in rules.textEleven %}
+          <p>{{ item.elem }}</p>
+        {% endfor %}
+      </div>
+      <div class="requirements-item">
+        <span>{{ rules.title[12].title }}</span>
+        {% for item in rules.textThirteen %}
+          <p>{{ item.elem }}</p>
+        {% endfor %}
+        <ul>
+          {% for item in rules.textList %}
+            <li>{{ item.elem }}</li>
+          {% endfor %}
+        </ul>
+        <p>{{ rules.textParagraph }}</p>
+      </div>
+    </div>
+  </section>
+</main>
+{% include "../parts/footer.njk" ignore missing %}
+<script src="./assets/js/burger.js"></script>
+</body>
+</html>

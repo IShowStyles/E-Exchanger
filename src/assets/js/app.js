@@ -19,8 +19,9 @@ const regexps = {
   cyrillic: new RegExp(/^[\s\u0400-\u04FF]+$/),
   special: new RegExp(/[-+!_@*^:"()\\]/),
   nums: new RegExp(/^[0-9]+$/),
-  english: new RegExp(/^[a-zA-Z?><;,{}[\]\-_+=!@#$%\^&*|']*$/),
-  email: new RegExp(/^((?!\.)[\w_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/)
+  english: new RegExp(/^[aA-zZ]/),
+  email: new RegExp(/^((?!\.)[\w_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/),
+  date: new RegExp(/\//),
 };
 
 
@@ -109,12 +110,14 @@ visibleSelectElem.forEach(elem => {
     const img = current.querySelector('img').src;
     const val = current.getAttribute("data-value");
     const text = current.innerText;
-    console.log(text, val, img);
     let itemBtn = `<li><img src="${img}" alt="${val}"/><span>${text}</span></li>`;
     visibleSelectBtn.innerHTML = itemBtn;
     visibleSelectBtn.setAttribute('data-value', val);
+    if (val !== undefined) {
+      attrState.crypto = val;
+    }
 
-  })
+  });
 });
 
 //
@@ -139,6 +142,7 @@ const removeClass = (block, classrem) => {
   })
 }
 
+
 const ChangeBlock = () => {
   let num = count.nav;
   let prevIndex = count.nav - 1;
@@ -154,48 +158,63 @@ const ChangeBlock = () => {
     if (num === 1 || num <= 3) {  //&& num <= 1
       document.querySelector(".swaper__available").style.display = "none";
     }
+
     if (num < 1) {
       document.querySelector(".swaper__available").style.display = "block";
     }
+
     if (num === 2 && num <= 2 || num <= 3) {
       document.querySelector(".swaper-promo").style.display = "none";
-      document.querySelector(".swaper-btn").style.display = "none";
     }
+
     if (num < 2) {
       document.querySelector(".swaper-promo").style.display = "block";
-      document.querySelector(".swaper-btn").style.display = "block";
     }
+
+    if (num === 1) {
+      document.querySelector(".swaper-btn").style.display = "none";
+      document.querySelector(".swaper-btn__deposit").style.display = "block";
+    }
+
+    if (num >= 2) document.querySelector(".swaper-btn").style.display = "none";
+
+    if (num >= 2) {
+      document.querySelector(".swaper-btn__deposit").style.display = "none";
+    }
+
   })
 }
-//
+
+const adressWallet = document.querySelector("#receive-adress");
+const adressChain = document.querySelector("#receive-chain");
+const usdCurrency = document.querySelector("#usd-receive");
+
+
+const validDeposit = () => {
+  if (!validateDeposit()) return false;
+  if (validateDeposit()) count.nav++;
+  usdCurrency.innerHTML = enteredVal.value;
+  const attrAdressChain = attrState.crypto;
+  if (attrAdressChain === "tether_trc-20") {
+    adressWallet.innerHTML = `TFHi9StMrntGNsNoMc9zCFq2xeTUXLmPXy`;
+    adressChain.innerHTML = `ТRС20`;
+    document.querySelector("#chain").innerHTML = `ТRС20`;
+  }
+  if (attrAdressChain === "tether_erc-20") {
+    adressWallet.innerHTML = `0x1B2A19F9423E01Dac515a0F3E0d570dB6680F22c`;
+    adressChain.innerHTML = `ЕRC20`;
+    document.querySelector("#chain").innerHTML = `ЕRC20`;
+  }
+
+  ChangeBlock();
+}
+
 const validBlock = () => {
   if (!removeClassDetails()) return false;
   if (removeClassDetails()) count.nav++;
   ChangeBlock();
 }
-//change func for validate
-// document.addEventListener('DOMContentLoaded', () =>changeBlock() )
 
-
-//menu
-const burger = document.querySelector(".header-top__burger");
-const mobileMenu = document.querySelector(".header-top__menu-list");
-
-
-burger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('menu--active');
-  if (mobileMenu.classList.contains('menu--active')) {
-    burger.classList.add('burger--active');
-  } else {
-    ю
-    burger.classList.remove('burger--active');
-  }
-  setTimeout(() => {
-    burger.classList.remove('burger--active');
-  }, 2500)
-});
-
-//currency rate
 
 const curValAPI = ["EURUSDT", "BUSDUSDT", "USDTUAH", "USDTRUB"];
 let currRate = [];
@@ -203,8 +222,11 @@ const arrFetchCurrency = curValAPI.map(elem => fetch(`https://api.binance.com/ap
 const listPromises = Promise.all(arrFetchCurrency)
   .then((resolve) => {
     currRate = resolve;
+    document.querySelector(".preloader").style.display = "none";
     return currRate;
+
   })
+
   .catch(error => {
     console.error(error)
   });
@@ -219,19 +241,60 @@ function inputChangeIn(percent) {
   let val = +enteredVal.value;
   if (enteredVal.value === " " || val.length === 0) outedVal.value = (70 * percent).toFixed(2)
   outedVal.value = (val * percent).toFixed(2);
-
 }
 
 function inputChangeOut(percent) {
   let val = +outedVal.value;
-  console.log(percent)
   enteredVal.value = (val / percent).toFixed(2);
 }
 
 const infoRateSpan = document.querySelector(".swaper__available-num");
 
-const infoRates = (fiat, value) => {
-  infoRateSpan.innerHTML = `1USDT - ${fiat.toFixed(2)}${value}`
+const infoRates = (fiat, value, currency) => {
+  const rateStr = `1USDT - ${fiat.toFixed(2)}${value}`;
+  infoRateSpan.innerHTML = rateStr.toUpperCase();
+  if (value === "eur") {
+    const rateStr = `1USDT - ${fiat.toFixed(3)}${value}`;
+    infoRateSpan.innerHTML = rateStr.toUpperCase();
+  }
+
+}
+
+function getRandom(min, max) {
+  return (Math.random() * (max - min) + min).toFixed(2);
+}
+
+
+let reserved;
+const generateReserved = (num) => {
+
+  if (localStorage.getItem("reserv") === null || localStorage.getItem("reserv") === undefined) {
+    localStorage.setItem("reserv", JSON.stringify(num));
+  }
+
+  addReserved();
+};
+
+const addReserved = () => {
+  let lsReserv = JSON.parse(localStorage.getItem("reserv"));
+  if (lsReserv === null) {
+    generateReserved();
+  }
+  document.querySelector("#reserv").innerHTML = lsReserv;
+}
+setInterval(() => {
+  const randomNum = getRandom(768, 8479);
+  localStorage.removeItem('reserv');
+  generateReserved(randomNum);
+  addReserved();
+}, 1000 * 4 * 4)
+
+
+// setInterval(() => addReserved(), 1000 * 60 * 3);
+
+const changeInputVal = (rate, val) => {
+  val = "";
+  val = rate * enteredVal.value;
 }
 
 async function rates(elem) {
@@ -239,19 +302,21 @@ async function rates(elem) {
   data = await listPromises;
   const cardUah = +data[2].price * 1.04;
   const cardRub = +data[3].price * 1.07;
-  const cardEur = +data[0].price * 1.03;
+  const cardEur = +data[0].price * 1.04;
   const cardUsd = +data[1].price * 1.04;
-  if (enteredVal.value.length === 0) outedVal.placeholder = (70 * cardUsd).toFixed(2);
+  if (enteredVal.value.length === 0) outedVal.value = (70 * cardUsd).toFixed(2);
   outedVal.placeholder = (70 * cardUsd).toFixed(2);
   infoRateSpan.innerHTML = `1USDT - ${(+data[1].price + 0.04).toFixed(2)}USD`;
   enteredVal.addEventListener("input", (e) => inputChangeIn(cardUsd));
   Object.defineProperty(elem, "card", {
     set(val) {
+      enteredVal.value = 70;
       if (val === "uah") {
         outedVal.value = (enteredVal.value * cardUah).toFixed(2);
         enteredVal.addEventListener("input", () => inputChangeIn(cardUah));
         outedVal.addEventListener("input", () => inputChangeOut(cardUah));
         infoRates(cardUah, val);
+        changeInputVal(cardUah, outedVal.value);
       }
 
       if (val === "rub") {
@@ -259,14 +324,15 @@ async function rates(elem) {
         enteredVal.addEventListener("input", () => inputChangeIn(cardRub));
         outedVal.addEventListener("input", () => inputChangeOut(cardRub));
         infoRates(cardRub, val);
+        changeInputVal(cardRub, outedVal.value);
       }
 
       if (val === "eur") {
-        console.log(cardEur)
         outedVal.value = (enteredVal.value * cardEur).toFixed(2);
         enteredVal.addEventListener("input", () => inputChangeIn(cardEur));
         outedVal.addEventListener("input", () => inputChangeOut(cardEur));
         infoRates(cardEur, val);
+        changeInputVal(cardEur, outedVal.value);
       }
 
       if (val === "usd") {
@@ -274,35 +340,54 @@ async function rates(elem) {
         enteredVal.addEventListener("input", () => inputChangeIn(cardUsd));
         outedVal.addEventListener("input", () => inputChangeOut(cardUsd));
         infoRates(cardUsd, val);
+        changeInputVal(cardUsd, outedVal.value);
       }
     }
   });
+
+
 }
 
+
 const clearFields = (elem, numStr) => {
-  elem.value = elem.value.substring(0, numStr);
+  return elem.value = elem.value.substring(0, numStr);
 };
 
 enteredVal.oninput = function () {
   clearFields(enteredVal, 8);
   this.value = this.value.replace(regexps.special, "");
   this.value = this.value.replace(/\D/, "");
+  this.value = this.value.replace(/^0+/, "");
 };
 
 outedVal.oninput = function () {
   clearFields(outedVal, 14);
   this.value = this.value.replace(regexps.special, "");
   this.value = this.value.replace(/\D/, "");
+  this.value = this.value.replace(/^0+/, "");
 };
+
+let config = {attributes: true, childList: false, characterData: false};
+let observer = new MutationObserver(function (mutations) {
+  mutations.forEach(function (mutation) {
+
+    if (mutation.type === "attributes" && mutation.attributeName === "data-value") {
+      attrState.crypto = document.querySelector("#btn-crypto").getAttribute(mutation.attributeName);
+    }
+
+  });
+});
+
+observer.observe(document.querySelector("#btn-crypto"), config);
 
 
 const exchangeBlock = document.querySelector(".swaper-exchange");
 const btnCard = document.querySelector("#card-btn");
 const validateDetails = (elem, type) => {
   const fiatCurrency = ["eur", "usd", "rub", "uah"];
-  const cryptoAttr = ["tether_trc-20", "tether_bep-20"];
+  const cryptoAttr = ["tether_trc-20", "tether_erc-20"];
   let valData = btnCard.getAttribute("data-value");
-  let valCryptoData = document.querySelector("#btn-crypto").getAttribute("data-value");
+  let valCryptoData = attrState.crypto;
   const errors = {
     count: "Минимальная сумма перевода 70$!",
     emptyVal: "Введите сумму для перевода!",
@@ -322,7 +407,6 @@ const validateDetails = (elem, type) => {
     case "crypto":
       if (!cryptoAttr.includes(valCryptoData)) {
         errorArr.push(errors["trade"][0]);
-        console.log(true)
       }
       if (!elem.value.length) {
         errorArr.push(errors["emptyVal"]);
@@ -332,9 +416,6 @@ const validateDetails = (elem, type) => {
       }
       break;
   }
-
-
-  console.log(errorArr)
 
   return errorArr.reduce((acc, item) => acc + `<p>${item}</p>  `, "");
 };
@@ -353,6 +434,7 @@ const removeClassDetails = () => {
   if (resultStr.length) {
     error.innerHTML += resultStr;
     error.classList.add("open")
+    exchangeBlock.classList.add("required");
     return false;
   }
 
@@ -363,87 +445,365 @@ const removeClassDetails = () => {
 const email = document.querySelector("#deposit-email");
 const card = document.querySelector("#deposit-card");
 const cardName = document.querySelector("#deposit-name");
-const cardDate = document.querySelector("#deposit-date");
-const arrDeposit = [email, card, cardName, cardDate];
+const arrDeposit = [email, card, cardName];
 
-console.log(typeof email)
-const depositFileds  = document.querySelectorAll(".swaper-deposit__elem");
-const validateFieldDeposit = () => {
+const depositFileds = document.querySelectorAll(".swaper-deposit__elem");
+arrDeposit.forEach(elem => {
+
+  elem.addEventListener("input", (evt => {
+    const currField = evt.currentTarget;
+    let currFieldValue = currField.value;
+    const currFieldId = currField.id;
+    switch (currFieldId) {
+      case "deposit-email":
+        clearFields(email, 35);
+        break;
+      case "deposit-card":
+        clearFields(card, 16);
+        break;
+      case "deposit-name":
+        clearFields(cardName, 35);
+        break;
+    }
+  }))
+});
+
+
+const validateFieldDeposit = (val, type) => {
   card.oninput = function () {
     this.value = this.value.replace(/\D/, "");
   }
 
   const errorData = {
     email: "Введите корректный E-mail адрес",
-    card: "Введите корректный номер кредитной карты",
-    name: "Введите имя Владельца карты",
-    data: "Введите корректную информацию об кредитной карты"
+    card: "Введите корректный номер кредитной Карты",
+    name: "Введите имя Владельца Карты"
   };
 
-  const errorArr = [];
+  const errorDepArr = [];
 
-  arrDeposit.forEach(elem => {
-    console.log(elem)
-
-    elem.addEventListener("input", (evt => {
-      const currField = evt.currentTarget;
-      let currFieldValue = currField.value;
-      const currFieldId = currField.id;
-      switch (currFieldId) {
-        case  "deposit-email":
-          clearFields(email, 28);
-          if (!regexps.email.test(currFieldValue)) {
-            errorArr.push(errorData.email);
-          }
-          break;
-        case  "deposit-card":
-          clearFields(card, 16);
-          if (!regexps.nums.test(currFieldValue)) {
-            errorArr.push(errorData.card);
-          }
-          break;
-
-        case  "deposit-name":
-          clearFields(cardName, 35);
-          if (!regexps.english.test(currFieldValue)) {
-            errorArr.push(errorData.name);
-          }
-          break;
-
-        case  "deposit-date":
-          clearFields(cardDate, 7);
-          break;
+  switch (type) {
+    case "email":
+      if (!regexps.email.test(val.value)) {
+        errorDepArr.push(errorData.email);
+        val.setAttribute("data-error", "true")
       }
-    }))
+      if (regexps.email.test(val.value) === true) {
+        val.setAttribute("data-error", "false")
+      }
+      break;
+    case "name":
+      if (!regexps.english.test(val.value)) {
+        errorDepArr.push(errorData.name);
+        val.setAttribute("data-error", "true")
+      }
+      if (regexps.english.test(val.value) === true) {
+        val.setAttribute("data-error", "false")
+      }
+      break;
+    case "card":
+      if (!regexps.nums.test(val.value)) {
+        errorDepArr.push(errorData.card);
+        val.setAttribute("data-error", "true")
+      }
+      if (regexps.nums.test(val.value) === true) {
+        val.setAttribute("data-error", "false")
+      }
+      break;
+    case "date":
+      if (!regexps.date.test(val.value)) {
+        errorDepArr.push(errorData.date);
+        val.setAttribute("data-error", "true")
+      }
+      if (regexps.date.test(val.value) === true) {
+        val.setAttribute("data-error", "false");
+      }
+      break;
+  }
+
+  return errorDepArr.reduce((acc, item) => acc + `<p>${item}</p><br/>`, "")
+}
+
+const errDeposit = document.querySelector(".swaper-deposit__errors");
+const elemDeposit = document.querySelectorAll(".swaper-deposit__elem");
+
+const validateDeposit = () => {
+  let errStr = "";
+  errDeposit.innerHTML = "";
+
+
+  errStr += validateFieldDeposit(email, "email");
+  errStr += validateFieldDeposit(cardName, "name");
+  errStr += validateFieldDeposit(card, "card");
+
+  elemDeposit.forEach(elem => {
+    const inputElement = elem.querySelector("input");
+    const errorData = inputElement.getAttribute("data-error");
+    if (errorData === "false") {
+      elem.classList.remove("required");
+    }
+    if (errorData === "true") {
+      elem.classList.add("required");
+    }
   })
-  return errorArr.reduce((acc,item)=> acc + `<p>${item}</p><br/>`,"")
-}
 
-const validateDeposit=()=>{
-  if(!depositFileds.value.length) {
-    depositFileds.classList.add("required");
+  if (errStr.length) {
+    errDeposit.innerHTML += errStr;
+    errDeposit.classList.add("open");
     return false;
   }
- const errorHTML = validateFieldDeposit();
-  console.log(errorHTML)
+  errDeposit.classList.remove("open");
+  return true;
+
+}
+
+let dataTradeObj = [];
+
+const saveTradeData = (arr) => {
+  localStorage.setItem("trade", JSON.stringify(arr));
+}
+
+let cryptoNetwork = '';
+let cryptoIn = '';
+let fiatOut = '';
+let fiatVal = '';
+
+const swaperExchange = document.querySelector(".swaper-exchange");
+
+function getDataFromTradeMenu() {
+
+  let tmpObj = {
+    network: "",
+    cryptoVal: 0,
+    cardNum: 0,
+    typeFiat: ""
+  }
+  if (!swaperExchange.classList.contains("block-valid")) {
+    return false;
+  }
+
+  if (swaperExchange.classList.contains("block-valid")) {
+    cryptoNetwork = document.querySelector("#btn-crypto").getAttribute("data-value");
+    cryptoIn = document.querySelector("#fiat-in").value;
+    fiatOut = document.querySelector("#fiat-out").value;
+    fiatVal = document.querySelector("#card-btn").getAttribute("data-value");
+  }
+
+  tmpObj["network"] = cryptoNetwork;
+  tmpObj["cryptoVal"] = cryptoIn;
+  tmpObj["cardNum"] = fiatOut;
+  tmpObj["typeFiat"] = fiatVal;
+
+
+  if (localStorage.getItem("trade") !== null) {
+    const tmpLS = JSON.parse(localStorage.getItem("trade"));
+    dataTradeObj = [...tmpLS, tmpObj]
+  } else {
+    dataTradeObj.push(tmpObj);
+  }
+  return dataTradeObj;
+
 }
 
 
-const depositBtn = document.querySelector(".swaper-btn");
-depositBtn.addEventListener("click", (e) => {
-  if (!validBlock()){
+// console.log(JSON.parse(localStorage.getItem("trade")));
+
+const templateTrade = ({network, cryptoVal, cardNum, typeFiat}) => {
+
+  let fiatCard = ``;
+  let networkCrypto = ``;
+  if (typeFiat === "eur") {
+    fiatCard = `Visa/MasterCar EUR`;
+  }
+
+  if (typeFiat === "rub") {
+    fiatCard = `Visa/MasterCar RUB`;
+  }
+
+  if (typeFiat === "uah") {
+    fiatCard = `Visa/MasterCar UAH`;
+  }
+
+  if (typeFiat === "usd") {
+    fiatCard = `Visa/MasterCar USD`;
+  }
+
+  if (network === "tether_trc-20") {
+    networkCrypto = "USDT TRC20";
+  }
+
+  if (network === "tether_erc-20") {
+    networkCrypto = "USDT ERC20";
+  }
+
+  return `<div class="swaper-results__block-wrap">
+  <div class="swaper-results__block-elem">
+  <img class="swaper-results__block-img" width="20" height="20" src="assets/img/tether.png" alt="tether img">
+  <span class="swaper-results__block-val" id="crypto-out">
+    ${cryptoVal}
+  </span>
+  <p class="swaper-results__block-text uppperCase" id="crypto-network">
+    ${networkCrypto}
+  </p>
+</div>
+<div class="swaper-results__block-elem">
+  <img class="swaper-results__block-img" width="20" height="20"src="assets/img/Mastercard.png" alt="card img">
+  <span class="swaper-results__block-val" id="fiat-out">
+    ${cardNum}
+  </span>
+  <p class="swaper-results__block-text" id="fiat-type">
+   ${fiatCard}
+  </p>
+</div>
+</div>`;
+
+}
+
+
+function renderDataFromTradeMenu() {
+
+  let dataLS = JSON.parse(localStorage.getItem("trade"));
+
+  if (dataLS === null) {
+    document.querySelector(".swaper-trades__block").style.display = "flex";
+  }
+
+
+  let res = ``
+
+  if (dataLS !== null) {
+    document.querySelector(".swaper-trades__block-empty").style.display = "none";
+    const arrData = JSON.parse(localStorage.getItem("trade"))
+    let arrDataLegnth = arrData.length;
+    for (let key in arrData) {
+      let data = arrData[key];
+      res += templateTrade(data);
+    }
+  }
+  document.querySelector(".swaper-results").innerHTML = res;
+
+}
+
+
+const detailBtn = document.querySelector(".swaper-btn");
+detailBtn.addEventListener("click", () => {
+  if (!validBlock()) {
     return false;
   }
-  validateDeposit();
 });
 
+const depositBtn = document.querySelector(".swaper-btn__deposit");
+depositBtn.addEventListener("click", () => validDeposit());
+
+document.querySelector(".swaper-waiting__bottom-btn").addEventListener("click", () => {
+  count.nav++
+  ChangeBlock();
+  localStorage.setItem("tradesVisible", JSON.stringify(true))
+  let data = getDataFromTradeMenu();
+  saveTradeData(data);
+});
+
+document.querySelector(".swaper-result__text").addEventListener("click", () => {
+  document.location.reload();
+})
+
+document.querySelector(".swaper-trades__top-add").addEventListener("click", () => {
+  document.location.reload();
+})
 
 rates(attrState);
 
-
-// document.querySelector("#reserv").innerHTML = Math.
 
 //date
 const date = new Date();
 let year = date.getFullYear();
 document.querySelector('.footer-copyrights__text > span').innerHTML = year;
+
+
+const tradeBurger = document.querySelector(".swaper-trade__burger-wrap");
+const trades = document.querySelector(".swaper-trades");
+
+tradeBurger.onclick = () => {
+  trades.style.display = "block";
+  document.querySelector(".swaper-exchange").style.display = "none";
+  document.querySelector(".swaper-list").style.display = "none";
+  document.querySelector(".swaper-promo").style.display = "none";
+  document.querySelector(".swaper-promo").style.display = "none";
+  document.querySelector(".swaper__available").style.display = "none";
+  document.querySelector(".swaper-deposit").style.display = "none";
+  document.querySelector(".swaper-trade").style.display = "none";
+  document.querySelector(".swaper-btn").style.display = "none";
+  document.querySelector(".swaper-waiting").style.display = "none";
+  document.querySelector(".swaper-result").style.display = "none";
+  document.querySelector("#trades").style.display = "block";
+  document.querySelector(".swaper-btn__deposit").style.display = "none";
+  if (JSON.parse(localStorage.getItem("trades")) === null) document.querySelector(".swaper-results").style.display = "block";
+  renderDataFromTradeMenu();
+};
+
+const setFlagVisible = () => {
+  if (JSON.stringify(localStorage.getItem("trades")) === null || JSON.stringify(localStorage.getItem("trades")) === undefined) {
+    localStorage.setItem("tradesVisible", JSON.stringify(false))
+  }
+}
+
+
+document.querySelector(".swaper-trades__top-close").onclick = () => displayTradeMenu();
+document.querySelector(".swaper-trades__top-back").onclick = () => displayTradeMenu();
+
+function displayTradeMenu() {
+  trades.style.display = "none";
+  document.querySelector(".swaper-exchange").style.display = "";
+  document.querySelector(".swaper-list").style.display = "";
+  document.querySelector(".swaper-promo").style.display = "";
+  document.querySelector(".swaper-deposit").style.display = "";
+  document.querySelector(".swaper__available").style.display = "";
+  document.querySelector(".swaper-trade").style.display = "";
+  document.querySelector(".swaper-btn").style.display = "";
+  document.querySelector(".swaper-result").style.display = "";
+  document.querySelector(".swaper-waiting").style.display = "";
+  document.querySelector(".swaper-btn__deposit").style.display = "";
+  document.querySelector("#trades").style.display = "none";
+  if (count.nav >= 2) {
+    document.querySelector(".swaper-btn").style.display = "none";
+    document.querySelector(".swaper-promo").style.display = "none";
+  }
+
+  if (count.nav >= 1) {
+    document.querySelector(".swaper__available").style.display = "none";
+  }
+
+  if (count.nav >= 3) {
+    document.querySelector(".swaper-btn__deposit").style.display = "none";
+  }
+
+}
+
+const visibleMenu = () => {
+  const lsIsVisible = JSON.parse(localStorage.getItem("tradesVisible"));
+
+
+  if (lsIsVisible === false) {
+    document.querySelector(".swaper-trades__block-empty").style.display = "block"
+    document.querySelector(".swaper-results").style.display = "none"
+  }
+  if (lsIsVisible === true) {
+    document.querySelector(".swaper-results").style.display = "block"
+    document.querySelector(".swaper-trades__block-empty").style.display = "none"
+  }
+}
+
+window.onload = () => {
+  let reservTmp = getRandom(768, 8479)
+  if (localStorage.getItem("trade") !== null) {
+    generateReserved(reservTmp);
+  }
+
+
+  if (localStorage.getItem("trade") === null) {
+    const firstRender = getRandom(768, 8479);
+    document.querySelector("#reserv").innerHTML = firstRender;
+    generateReserved(firstRender);
+  }
+  visibleMenu();
+};

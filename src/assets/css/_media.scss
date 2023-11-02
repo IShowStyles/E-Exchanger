@@ -1,3 +1,13 @@
+@media (max-width: 1919px) {
+
+  .contacts,
+  .about {
+    .header {
+      background-image: url('../img/header-bg.png');
+    }
+  }
+}
+
 @media (max-width: 1680px) {
 
   .container {
@@ -28,6 +38,24 @@
     }
   }
 
+  .about .header-top {
+    margin-bottom: 80px;
+  }
+
+  .about {
+    &-title {
+      font-size: 48px;
+      line-height: 58px;
+    }
+
+    &-card__top {
+      & p {
+        font-size: 20px;
+        line-height: 25px;
+      }
+    }
+  }
+
   // contacs
   .contacts .header {
     padding: 35px 0 270px 0;
@@ -50,6 +78,26 @@
     }
   }
 
+  .header-bottom__title-text {
+    margin-bottom: 40px;
+  }
+
+  .header-bottom__proposition-one {
+    &::before {
+      right: -40px;
+    }
+  }
+
+  .header-bottom__title {
+    padding-top: 100px;
+
+    &-text {
+      font-size: 36px;
+      max-width: 400px;
+      line-height: 48px;
+    }
+  }
+
   .header-contacts__elem-instagram,
   .header-contacts__elem-telegram {
     background-size: 49px;
@@ -59,6 +107,33 @@
 
   .footer-title {
     margin-bottom: 22px;
+  }
+
+
+  .requirements {
+    &-item {
+      & span {
+        font-size: 27px;
+        line-height: 32px;
+      }
+
+      & p {
+        &:not(:last-child) {
+          margin-bottom: 35px;
+        }
+      }
+
+      & p,
+      ul li {
+        font-size: 20px;
+        line-height: 25px;
+      }
+    }
+  }
+
+  .reviews-card {
+    max-width: 355px;
+    font-size: 15px;
   }
 
 }
@@ -77,6 +152,20 @@
     font-size: 19px;
     line-height: 22px;
   }
+
+  .header-bottom__title {
+    max-width: 500px;
+
+    &-text {
+      max-width: 485px;
+    }
+  }
+
+  .header-bottom__proposition-one::before,
+  .header-bottom__proposition .header-bottom__proposition-two::before {
+    right: -24px;
+  }
+
 
   .header-top__nav {
     &-elem:not(:last-child) {
@@ -119,12 +208,81 @@
     line-height: 24px;
   }
 
+  .requirements {
+    &-item {
+      & span {
+        font-size: 26px;
+        line-height: 30px;
+      }
+
+      & p,
+      ul li {
+        font-size: 18px;
+        line-height: 23px;
+      }
+
+      & p {
+        &:not(:last-child) {
+          margin-bottom: 30px;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 70px;
+      }
+    }
+  }
+
+  .about-title {
+    font-size: 40px;
+    line-height: 50px;
+  }
+
+  .reviews {
+    padding-bottom: 175px;
+
+    &-title {
+      font-size: 42px;
+      line-height: 52px;
+    }
+
+    &-card {
+      max-width: 335px;
+      font-size: 15px;
+      padding: 20px 12px 10px 20px;
+
+      &:not(:nth-last-child(-n+3)) {
+        margin-bottom: 45px;
+      }
+
+      & p {
+        margin-bottom: 8px;
+      }
+    }
+  }
 
 }
 
 @media(max-width: 1280px) {
   .container {
     max-width: 1060px;
+  }
+
+  .comment .header {
+    margin-bottom: 45px;
+    padding-bottom: 35px;
+  }
+
+  .about-title {
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 35px;
+  }
+
+  .requirements-title {
+    font-size: 30px;
+    line-height: 38px;
+    margin-bottom: 45px;
   }
 
   .logo-link__wrap-img {
@@ -164,7 +322,7 @@
     }
   }
 
-  .contacts .header{
+  .contacts .header {
     background-position: top;
     background-size: 100%;
     background-color: $darkText;
@@ -192,9 +350,33 @@
     }
   }
 
+  .swaper {
+    max-width: 425px;
+    padding: 16px 27px 18px;
+  }
+
   .header-contacts__elem-instagram,
   .header-contacts__elem-telegram {
     background-size: 45px;
+  }
+
+  .about-inner {
+    display: block;
+  }
+
+  .about-card {
+    max-width: 100%;
+
+    &__first,
+    &__second {
+      margin-bottom: 67px;
+      margin-right: 0;
+    }
+  }
+
+
+  .about .header-top {
+    margin-bottom: 60px;
   }
 
 
@@ -232,11 +414,124 @@
     padding: 40px 0;
   }
 
+  .requirements {
+    &-item {
+      & span {
+        font-size: 24px;
+        line-height: 28px;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 70px;
+      }
+    }
+  }
+
 }
 
 @media(max-width: 1024px) {
   .container {
     max-width: 905px;
+  }
+
+  .requirements-title {
+    font-size: 26px;
+    line-height: 34px;
+    margin-bottom: 38px;
+  }
+
+  .swaper-result__finished-text {
+    font-size: 28px;
+    line-height: 33px;
+  }
+
+  .swaper-trades__top-trade {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  .swaper-trades__top-close {
+    width: 38px;
+    height: 38px;
+  }
+
+  .swaper-trades__top-back {
+    width: 44px;
+    height: 44px;
+  }
+
+  .swaper-trades__block-trade {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .swaper-trades__block-text {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+
+  .swaper-trades__top-add {
+    width: 32px;
+    height: 32px;
+
+    &>img {
+      width: 11px;
+      height: 11px;
+    }
+  }
+
+  .swaper-result__details-text {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .swaper-trades__block-empty {
+    margin-top: 95px;
+    margin-bottom: 175px;
+  }
+
+  .about-title {
+    font-size: 35px;
+    line-height: 45px;
+    margin-bottom: 30px;
+  }
+
+  .swaper-result__text {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+
+  .swaper-result__finished-text {
+    font-size: 24px;
+    line-height: 28px;
+    margin-right: 5px;
+  }
+
+
+  .swaper-btn__deposit,
+  .swaper-waiting__bottom-btn {
+    font-size: 17px;
+    line-height: 21px;
+    padding: 16px 0;
+  }
+
+
+  .swaper-promo__input {
+    &>input {
+      padding: 19px 6px;
+      margin-left: 9px;
+    }
+  }
+
+  .swaper-deposit__elem {
+    padding: 10px 12px 10px;
+  }
+
+  .about-title {
+    font-size: 30px;
+    line-height: 36px;
   }
 
   .logo-link__wrap-img {
@@ -250,12 +545,57 @@
     line-height: 20px;
   }
 
-  .contacts .header{
+  .contacts .header {
     background-position: 0;
     background-position-x: right;
     background-position-y: top;
     background-size: 100%;
     background-color: $darkText;
+  }
+
+  .start .header-top {
+    margin-bottom: 30px;
+  }
+
+  .header-bottom {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 75px;
+
+    &__title {
+      max-width: 600px;
+      padding-top: 80px;
+      margin-bottom: 80px;
+    }
+  }
+
+  .swaper {
+    max-width: 560px;
+  }
+
+  .header-bottom__title-text {
+    font-size: 30px;
+    max-width: 100%;
+    line-height: 40px;
+  }
+
+  .header-bottom__proposition-one::before,
+  .header-bottom__proposition .header-bottom__proposition-two::before {
+    right: -45px;
+  }
+
+  .swaper-deposit__elem {
+    padding: 12px 16px 14px;
+
+    &:nth-child(-n+3) {
+      margin-bottom: 17px;
+    }
+  }
+
+  .swaper-waiting__top-trade {
+    font-size: 29px;
+    line-height: 34px;
   }
 
   .header-top__nav {
@@ -268,6 +608,7 @@
       line-height: 19px;
     }
   }
+
   .header-contacts__elem-link {
     font-size: 20px;
     line-height: 24px;
@@ -287,6 +628,16 @@
     &:nth-child(-n+5) {
       margin-bottom: 22px;
     }
+  }
+
+  .about-card__top span {
+    width: 50px;
+    height: 50px;
+  }
+
+
+  .reviews-card {
+    max-width: 360px;
   }
 
   .contacts .header-top {
@@ -321,9 +672,32 @@
     line-height: 20px;
   }
 
-  .contacts .header{
+  .contacts .header {
     background-image: url('../img/header-bg.png');
   }
+
+  .requirements {
+    &-item {
+      & span {
+        font-size: 23px;
+        line-height: 27px;
+      }
+
+      & p {
+        font-size: 17px;
+        line-height: 22px;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 70px;
+      }
+    }
+  }
+
+  .reviews {
+    padding-bottom: 125px;
+  }
+
 }
 
 @media(max-width: 768px) {
@@ -331,13 +705,130 @@
     max-width: 670px;
   }
 
-  .logo-link__wrap-img{
+  .comment .header {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+  }
+
+  .about-title {
+    font-size: 32px;
+    line-height: 42px;
+    margin-bottom: 26px;
+  }
+
+
+  .requirements-title {
+    font-size: 26px;
+    line-height: 34px;
+    margin-bottom: 32px;
+  }
+
+  .rules .header {
+    padding-bottom: 45px;
+  }
+
+  .swaper-waiting__bottom-btn {
+    font-size: 15px;
+    line-height: 18px;
+    padding: 14px 0;
+  }
+
+  .swaper-top__name {
+    padding-bottom: 23px;
+  }
+
+  .swaper-results__block-img{
+    width: 18px;
+    height: 18px;
+  }
+
+  .swaper-results__block-val,
+  .swaper-results__block-text {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+  .swaper-list {
+    margin-bottom: 18px;
+  }
+
+  .swaper-waiting__top-trade {
+    font-size: 29px;
+    line-height: 34px;
+    margin-bottom: 11px;
+  }
+
+
+  .swaper-btn__deposit {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 14px 0;
+  }
+
+  .swaper-trades__block-empty {
+    margin-bottom: 155px;
+  }
+
+  .swaper-promo__input>input {
+    padding: 14px 4px;
+
+    &::placeholder {
+      font-size: 14px;
+    }
+  }
+
+  .about-card p {
+    font-size: 17px;
+    line-height: 22px;
+  }
+
+  .logo-link__wrap-img {
     width: 30px;
     height: 30px;
   }
 
   .header-top__burger {
     display: block;
+  }
+
+  .reviews {
+
+    &-inner {
+      justify-content: center;
+    }
+
+    &-card {
+      padding: 30px 32px 10px 24px;
+      max-width: 100%;
+
+      & span {
+        font-size: 15px;
+      }
+
+      &:nth-last-child(2),
+      &:nth-last-child(3),
+      &:not(:nth-last-child(-n+3)) {
+        margin-bottom: 38px;
+      }
+    }
+  }
+
+  .swaper-deposit__elem:nth-child(-n+3) {
+    margin-bottom: 15px;
+  }
+
+  .swaper-deposit__elem-label {
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  .swaper-trades__top-status {
+    max-width: 90px;
+  }
+
+  .swaper-deposit__elem-input {
+    font-size: 18px;
+    line-height: 21px;
   }
 
   .header-top__menu {
@@ -349,16 +840,58 @@
     display: none;
   }
 
+  .header-bottom__proposition-one::before,
+  .header-bottom__proposition .header-bottom__proposition-two::before {
+    right: -70px;
+  }
+
+  .header-bottom__proposition-text {
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  .header-bottom__proposition-three {
+    max-width: 137px;
+  }
+
   .header-top__menu-list.menu--active {
     right: 20px;
-    top: 0;
     max-width: 400px;
   }
+
 
   .header-contacts__title {
     font-size: 36px;
     line-height: 34px;
   }
+
+  .about-card__top span {
+    width: 45px;
+    height: 45px;
+  }
+
+  .header-bottom__title-text {
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+
+  .header-bottom__proposition-one {
+    max-width: 67px;
+  }
+
+  .header-bottom__proposition-two {
+    max-width: 88px;
+  }
+
+  .header-bottom__proposition-three {
+    max-width: 107px;
+  }
+
+  .header-bottom__title-text {
+    max-width: 90%;
+  }
+
 
   .contacts {
     max-width: 100%;
@@ -382,6 +915,38 @@
     }
   }
 
+  .swaper {
+    padding: 12px 20px 12px;
+  }
+
+  .swaper-btn {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 14px 0;
+  }
+
+  .requirements {
+    &-item {
+      & span {
+        font-size: 20px;
+        line-height: 24px;
+      }
+
+      & p,
+      ul li {
+        font-size: 16px;
+        line-height: 22px;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 60px;
+      }
+    }
+  }
+
+  .reviews-card {
+    padding: 17px 22px 10px 18px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -389,15 +954,220 @@
     max-width: 476px;
   }
 
-  .header-top__menu-elem:not(:last-child){
+  .comment .header {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+  }
+
+  .swaper-trades__block-empty {
+    margin-bottom: 135px;
+  }
+
+  .rules .header {
+    padding-bottom: 30px;
+  }
+
+  .about-title {
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 20px;
+  }
+  
+  .swaper-trades__text-paragraph{
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .requirements-title {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 28px;
+  }
+
+  .requirements-item:not(:last-child) {
+    margin-bottom: 45px;
+  }
+
+  .swaper-waiting__top-text {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  
+  .swaper-results__block-elem:not(:last-child){
+    margin-bottom: 7px;
+  }
+
+  .swaper-results__block-wrap:not(:last-child){
+    margin-bottom: 20px;
+  }
+
+  .swaper-waiting__bottom-btn {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+
+  .swaper-results__block-img{
+    width: 16px;
+    height: 16px;
+  }
+  
+//   .swaper-results__block-val,
+//   .swaper-results__block-text {
+//     font-size: 14px;
+//     line-height: 16px;
+// }
+
+  .swaper-result__finished-text {
+    font-size: 21px;
+    line-height: 25px;
+  }
+
+  .swaper-result__details-text {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .swaper-result__text {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .swaper-waiting__top {
+    height: 250px;
+  }
+
+
+  .swaper-trades__top-trade {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  .swaper-trades__top-close {
+    width: 38px;
+    height: 38px;
+  }
+
+  .swaper-trades__top-back {
+    width: 40px;
+    height: 40px;
+  }
+
+  .swaper-trades__block-trade {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .swaper-trades__block-text {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+
+  .swaper-trades__top-add {
+    width: 30px;
+    height: 30px;
+
+    &>img {
+      width: 9px;
+      height: 9px;
+    }
+  }
+
+
+  .swaper-waiting__top-trade {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 5px;
+  }
+
+  .swaper-deposit__elem-label {
+    margin-bottom: 4px;
+  }
+
+  .swaper-deposit__elem {
+    padding: 13px 16px 8px 16px;
+  }
+
+  .about-card__top span {
+    width: 38px;
+    height: 38px;
+  }
+
+  .swaper-deposit__elem-input {
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .header-bottom__proposition-text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .header-bottom__proposition-one::before,
+  .header-bottom__proposition .header-bottom__proposition-two::before {
+    right: -27px;
+  }
+
+  .header-bottom__title {
+    margin-bottom: 50px;
+
+    &-text {
+      max-width: 70%;
+      margin-bottom: 25px;
+    }
+  }
+
+  .swaper-top__name {
+    padding-top: 12px;
+    padding-bottom: 9px;
+    font-size: 12px;
+    line-height: 15px;
+
+    &::before {
+      bottom: -11px;
+    }
+  }
+
+  .swaper-trade__text {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .swaper-trade__coin {
+    max-width: 30px;
+    height: 30px;
+  }
+
+  .swaper-trade__burger-wrap {
+    padding: 7px 5px;
+  }
+
+  .swaper-trade__burger {
+    width: 16px;
+    height: 10px;
+  }
+
+  .swaper-top {
+    position: relative;
+    bottom: -9px;
+    height: 34px;
+
+    &__name {
+      padding-top: 0;
+    }
+  }
+
+
+  .header-top__menu-elem:not(:last-child) {
     margin-right: 20px;
   }
 
   .header-top__menu-list.menu--active {
     right: 20px;
-    top: 0;
+    top: -2px;
     height: 50px;
-    padding:0 20px;
+    padding: 0 20px;
     max-width: 500px;
     width: 100%;
   }
@@ -409,6 +1179,10 @@
   .footer-partners {
     max-width: 296px;
     height: 120px;
+  }
+
+  .about-card {
+    text-align: initial;
   }
 
   .footer-partners__img-first {
@@ -440,11 +1214,126 @@
     height: 20px;
   }
 
+  .swaper-btn {
+    font-size: 15px;
+    line-height: 19px;
+    padding: 12px 0;
+  }
+
+  .swaper-trade__burger {
+    width: 15px;
+    height: 11px;
+  }
+
+  .swaper-exchange__elem-input>input {
+    font-size: 21px;
+    line-height: 24px;
+  }
+
+  #btn-crypto li {
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    span {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+
+  .swaper-exchange__elem-input {
+    &>input {
+      font-size: 15px;
+      line-height: 18px;
+      height: 20px;
+
+      &::placeholder {
+        font-size: 15px;
+        line-height: 18px;
+      }
+    }
+
+    &>label {
+      margin-bottom: 4px;
+      font-size: 11px;
+      line-height: 13px
+    }
+  }
+
+
+  .swaper-exchange__card-list li,
+  #a li {
+    padding: 5px 0 5px 5px;
+  }
+
+  .btn-select.chevron::before {
+    bottom: 7px;
+  }
+
+  .btn-select.chevron.active-btn::before {
+    bottom: 8px;
+  }
+
+  .btn-select.chevron.active-btn.active-chevron::before {
+    bottom: 10px;
+  }
+
+  #a li {
+    padding: 6px 0 6px 6px;
+    margin-right: 15px;
+    max-width: 103px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    span {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  .swaper-exchange__elem {
+    height: 35px;
+
+    &:first-child {
+      margin-bottom: 14px;
+    }
+  }
+
+
+  .btn-select li span {
+    width: 77px;
+  }
+
+
+  .swaper-exchange {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    &::before {
+      top: 54px
+    }
+  }
+
+  .swaper-exchange__card-btn.chevron::before {
+    bottom: 7px;
+
+    & .active-chevron {
+      bottom: 7px;
+    }
+  }
+
+
   .header-contacts__title {
     font-size: 27px;
     line-height: 30px;
     margin-bottom: 20px;
   }
+
   .header-contacts__elem {
     height: 40px;
 
@@ -458,6 +1347,95 @@
     }
   }
 
+  #btn-crypto,
+  #card-btn {
+    height: 26px;
+
+    & .chevron {
+      bottom: 10px;
+    }
+  }
+
+  #wrap li,
+  #card-btn li {
+    span {
+      font-size: 11px;
+      line-height: 13px;
+      max-width: 70px;
+      text-align: center;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  #btn-crypto li {
+    span {
+      font-size: 11px;
+      line-height: 13px;
+    }
+  }
+
+
+  .btn-select {
+    width: 70px;
+    height: 26px;
+  }
+
+  #card-btn {
+    width: 70px;
+    height: 26px;
+
+    & .chevron::before {
+      bottom: 3px;
+    }
+  }
+
+  #a li span {
+    line-height: 13px;
+    font-size: 11px;
+  }
+
+
+  .swaper-exchange__card-list li {
+    background: #ECECEC;
+    width: 115px;
+    height: 36px;
+
+    &:nth-child(2) {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+
+
+  #btn-crypto.active-btn {
+    width: 115px;
+
+    & li span {
+      line-height: 11px;
+    }
+  }
+
+  .btn-select li {
+    height: 26px;
+  }
+
+  #card-btn.active-btn {
+    padding: 2px 4px;
+    width: 115px;
+
+    & li span {
+      line-height: 11px;
+    }
+  }
 
   .header-contacts__elem-instagram,
   .header-contacts__elem-telegram {
@@ -469,16 +1447,108 @@
       margin-left: 103px;
     }
   }
+
+  .requirements-item {
+    & span {
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    & p:not(:last-child) {
+      margin-bottom: 17px;
+    }
+  }
+
+
+  .reviews-title {
+    margin-bottom: 30px;
+    font-size: 36px;
+    line-height: 46px;
+  }
 }
 
-@media (max-width: 321px) {
+@media (max-width: 375px) {
   .container {
-    max-width: 476px;
+    max-width: 326px;
+  }
+
+  .comment .header {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+  }
+
+  .requirements-title {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .requirements-item:not(:last-child) {
+    margin-bottom: 30px;
+  }
+
+  #receive-adress{
+    display: block;
+    max-width: 300px;
+  }
+
+  .swaper-top__name::before {
+    bottom: -8px;
+  }
+
+  .swaper-waiting__top-trade {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .swaper-trades__top-close {
+    width: 32px;
+    height: 32px;
+  }
+
+  .swaper-trades__top-add {
+    width: 24px;
+    height: 24px;
+  }
+
+  .swaper-trades__top-back {
+    width: 32px;
+    height: 32px;
+}
+
+  .swaper-trades__top-status {
+    max-width: 75px;
+  }
+
+  .swaper {
+    padding: 16px 15px 18px;
+  }
+
+  .swaper-deposit__elem:nth-child(-n+3) {
+    margin-bottom: 11px;
+  }
+
+  .swaper-trades__top-trade {
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  .swaper-trades__block-text {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+  .b {
+    max-width: 160px;
+    right: -1px;
+  }
+
+  .header-bottom__proposition-one::before,
+  .header-bottom__proposition .header-bottom__proposition-two::before {
+    right: 0;
   }
 
   .header-top__menu-list.menu--active {
     right: 20px;
-    top: 0;
     max-width: 500px;
   }
 
@@ -488,8 +1558,12 @@
     }
   }
 
+  .header-contacts__elem-link {
+    font-size: 14px;
+    line-height: 16px;
+  }
 
-  .header-top__menu-elem-link{
+  .header-top__menu-elem-link {
     font-size: 14px;
     line-height: 16px;
   }
@@ -498,4 +1572,18 @@
   .header-top__menu-elem:not(:last-child) {
     margin-right: 25px;
   }
+
+  .requirements-item {
+    & span {
+      font-size: 11px;
+      line-height: 13px;
+    }
+
+    & p {
+      font-size: 11px;
+      line-height: 13px;
+
+    }
+  }
+
 }
